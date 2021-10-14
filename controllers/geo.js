@@ -10,6 +10,7 @@ const getLocations = async (req = request, res = response) => {
             msg:'se debe enviar una ubicacion valida'
         });
     }
+
     try {
         const dataHere =  await geoLocationHere(location);
         const dataGoogle = await geoLocationGoogle(location);
@@ -21,9 +22,12 @@ const getLocations = async (req = request, res = response) => {
         }else{
           if(dataGoogle){
             latlog = dataGoogle;
+          }else{
+            return res.status(204).json({
+                latlog
+            });  
           }
         }     
-
         return res.status(200).json({
             latlog,
             dataHere,

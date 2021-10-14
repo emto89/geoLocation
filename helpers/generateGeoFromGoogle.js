@@ -13,7 +13,7 @@ const geoLocationGoogle = async (location, res = response) =>  {
             resp = error;
         });     
         var { ...respuesta} = resp; 
-        if(respuesta.length > 0){
+        if( Object.keys(respuesta).length !== 0 ){
             return respuesta[0]["geometry"]["location"];
            }else{
             return  'No se encontraron resultados en Google'; 

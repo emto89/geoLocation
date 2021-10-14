@@ -56,7 +56,8 @@ const geoLocationHere = async (location) =>  {
         }
     });
     var { ...respuesta} = data.data["items"]; 
-    if(respuesta.length > 0){
+    
+    if( Object.keys(respuesta).length !== 0 ){
      return respuesta[0]["position"];
     }else{
      return  'No se encontraron resultados en HERE'; 

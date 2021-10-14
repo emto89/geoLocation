@@ -15,7 +15,6 @@ const router = Router();
 router.get('/',[validateJWT],getUser);
 
 router.post('/',[
-    validateJWT,
     check('correo','El correo no es valido').isEmail(),
     check('password','El password no es valido').isLength({ min:6}),
     validarCampos
